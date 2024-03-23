@@ -1,0 +1,148 @@
+
+    <header>{% extends 'base.html' %}</header>
+
+
+    {% block content %}
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+
+
+        .shell {
+            width: 780px;
+            height: 580px;
+            background: #ffffff;
+            position: relative;
+        }
+
+        .heada {
+            height: 340px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heada::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: url("./static/abmebc.avif");
+            background-size: cover;
+            z-index: -1;
+            transform: skewY(-4deg);
+            transform-origin: 0 0;
+        }
+
+        .cover {
+            position: absolute;
+            top: 190px;
+            left: 25px;
+            width: 220px;
+            z-index: 2;
+            border-radius: 500px;
+            border: 10px #fff solid;
+            box-shadow: 0 5px 10px #00000065;
+        }
+
+        .data {
+            padding: 190px 0 0 280px;
+            text-shadow: 0 0 20px #000;
+        }
+
+        .data .title1 {
+            color: white;
+            font-size: 50px;
+            font: 900 50px '';
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .data .title1 span {
+            position: absolute;
+            top: 17px;
+            margin-left: 12px;
+            background: #ffe44c;
+            border-radius: 5px;
+            color: #000000;
+            font-size: 14px;
+            padding: 0px 4px;
+        }
+
+        .data .title2 {
+            color: #fff;
+            font: 500 24px '';
+        }
+
+        .foot {
+            line-height: 26px;
+            color: #444;
+        }
+
+        .tags {
+            padding-left: 30px;
+            padding-top: 100px;
+            width: 250px;
+            float: left;
+            text-align: center;
+        }
+
+        .tag {
+            background: rgb(149, 178, 255);
+            color: #fff;
+            border-radius: 10px;
+            padding: 3px 8px;
+            font-size: 14px;
+            margin-right: 4px;
+            line-height: 35px;
+            cursor: pointer;
+        }
+
+        .tag:hover {
+            background: #eee4ad;
+            color: #444;
+        }
+
+        .introduce {
+            padding: 25px 0 0 35px;
+            width: 480px;
+            float: left;
+        }
+
+    </style>
+
+
+    <div class="shell">
+        <img src="./static/taylor.jpg" alt="" class="cover">
+        <div class="heada">
+            <div class="data">
+                <div class="title1">Eros<span>@DEV</span></div>
+                <div class="title2">You are the best thing that's ever been mine.</div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="tags">
+                <span class="tag">#PYTHON</span>
+                <span class="tag">#FLASK</span>
+                <span class="tag">#C++</span>
+                <span class="tag">#PYCHARM</span>
+                <span class="tag">#Vscode</span>
+            </div>
+            <div class="introduce">
+                <p>
+                    A personal dev.Learning python flask,c++ direct 3d and java lwjgl.Building Web pages.
+                    Love.ts.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+

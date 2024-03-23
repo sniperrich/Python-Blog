@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+</head>
+<body>
+    <h1 style="color:white;">用户登录</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form method="POST" action="{{ url_for('login') }}">
+        <label for="username" style="color:white;">用户名:</label><br>
+        <input type="text" id="username" name="username" required><br>
+        <label for="password" style="color:white;">密码:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="登录">
+        <a href="{{url_for('register')}}">No account?Go register</a>
+    </form>
+</body>
+</html>
+
+
+{% endblock %}
