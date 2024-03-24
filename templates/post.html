@@ -1,14 +1,43 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2 style="color:white;">{% block title %} {{ post['title'] }} {% endblock %}</h2>
-<span class="badge badge-primary">{{ post['created'] }}</span>
-<p style="color:white;">{{ post['content'] }}</p>
+<style>
+    .post-container {
+        background-color: #1c242c;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
 
-<hr>
-<form action="{{ url_for('delete', id=post['id']) }}" method="POST">
-    <input type="submit" value="删除" class="btn btn-danger btn-sm"
-        onclick="return confirm('确定要删除吗?')">
-</form>
+    .post-title {
+        color: white;
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
 
+    .post-date {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .post-content {
+        color: white;
+        line-height: 1.6;
+    }
+
+    .delete-form {
+        margin-top: 20px;
+    }
+
+</style>
+<div class="post-container">
+    <h2 class="post-title">{{ post['title'] }}</h2>
+    <span class="post-date badge badge-primary">{{ post['created'] }}</span>
+    <p class="post-content">{{ post['content'] }}</p>
+    <hr>
+    <form action="{{ url_for('delete', id=post['id']) }}" method="POST" class="delete-form">
+        <input type="submit" value="删除" class="btn btn-danger btn-sm"
+            onclick="return confirm('确定要删除吗?')">
+    </form>
+</div>
 {% endblock %}

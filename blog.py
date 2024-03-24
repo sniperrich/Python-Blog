@@ -19,8 +19,11 @@ def index():
     conn = get_db_connection()
     posts = conn.execute('SELECT * FROM posts').fetchall()
     conn.close()
+
     try:
-        return render_template('index.html', posts=posts,usn=session["username"])
+        usn = '<li><a href="#">' + session["username"] + "</a></li>"
+        print(usn)
+        return render_template('index.html', posts=posts)
     except:
         return render_template('index.html', posts=posts)
 @app.route('/posts/<int:post_id>')

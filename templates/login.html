@@ -6,9 +6,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>登录</title>
+    <style>
+        body {
+            background-color: #0c0c14;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: white;
+        }
+        form {
+            background-color: #1c242c;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        label, input[type="text"], input[type="password"], input[type="submit"], a {
+            display: block;
+            margin-bottom: 10px;
+            color: white;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <h1 style="color:white;">用户登录</h1>
+    <h1>用户登录</h1>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul>
@@ -19,15 +59,13 @@
         {% endif %}
     {% endwith %}
     <form method="POST" action="{{ url_for('login') }}">
-        <label for="username" style="color:white;">用户名:</label><br>
-        <input type="text" id="username" name="username" required><br>
-        <label for="password" style="color:white;">密码:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
+        <label for="username">用户名:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">密码:</label>
+        <input type="password" id="password" name="password" required>
         <input type="submit" value="登录">
-        <a href="{{url_for('register')}}">No account?Go register</a>
+        <a href="{{url_for('register')}}">No account? Go register</a>
     </form>
 </body>
 </html>
-
-
 {% endblock %}
