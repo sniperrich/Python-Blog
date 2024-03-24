@@ -12,11 +12,11 @@ cur = connection.cursor()
 
 # 插入两条文章
 cur.execute("INSERT INTO posts (title, content) VALUES (?, ?)",
-            ('学习Flask1', '跟麦叔学习flask第一部分')
+            ('阿弥诺斯', 'wcnm')
             )
 
 cur.execute("INSERT INTO posts (title, content) VALUES (?, ?)",
-            ('学习Flask2', '跟麦叔学习flask第二部分')
+            ('阿弥诺斯', 'wcnm')
             )
 
 # 提交前面的数据操作
