@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, url_for, flash, redirect, ses
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Get Good Get ErosSense'
+import markdown
 def get_db_connection():
     conn = sqlite3.connect('database.db')
     conn.row_factory = sqlite3.Row
@@ -26,20 +27,30 @@ def index():
         return render_template('index.html', posts=posts)
     except:
         return render_template('index.html', posts=posts)
+@app.route("/rain")
+def rain():
+    return render_template("rain.html")
+@app.route("/movie")
+def movie():
+    return render_template("movie.html")
 @app.route('/posts/<int:post_id>')
 def post(post_id):
     post = get_post(post_id)
-    return render_template('post.html', post=post)
+    print(markdown.markdown(post["content"]))
+    post_cont=markdown.markdown(post["content"])
+    return render_template('post.html', post=post,post_cont=post_cont)
 @app.route('/posts/new', methods=('GET', 'POST'))
 def new():
     if request.method == 'POST':
         title = request.form['title']
         content = request.form['content']
-
+        cover=request.form["cover"]
         if not title:
             flash('标题不能为空!')
         elif not content:
             flash('内容不能为空')
+
+
         else:
             conn = get_db_connection()
             conn.execute('INSERT INTO posts (title, content) VALUES (?, ?)',

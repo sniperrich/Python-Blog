@@ -1,6 +1,7 @@
 {% extends 'ibase.html' %}
-{% block content %}
 
+{% block content %}
+    <script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script>
     <style>
         body, html {
           height: 100%;
@@ -10,33 +11,75 @@
           box-sizing: border-box;
         }
 
-    </style>
-    <h1 style="color:white">{% block title %}Articles{% endblock %}</h1>
+        .container {
+          display: flex;
+          justify-content: center;
+          flex-direction: column; /* 垂直布局 */
+          align-items: center; /* 项目居中 */
+        }
 
-    {% for post in posts %}
-    <style>
         .postbox {
-            width: 1100px;
-            height: 100px;
+            width: 90%;
             border: 2px solid #1c242c;
-            border-radius: 20px 20px 20px 20px;
-            padding:10px;
-            background:#1c242c;
+            border-radius: 20px;
+            padding: 10px;
+            background: #1c242c;
+            margin-bottom: 20px; /* 增加 postbox 之间的间距 */
+            color: white;
         }
-        #title{
-            color:white;
+
+        .about {
+            width: 200px; /* 设置 about 的宽度 */
+            float: left; /* 浮动到左侧 */
+            margin-right: 20px; /* 增加 about 右侧的间距 */
         }
 
     </style>
-    <div class="postbox">
-        <a href="{{url_for('post', post_id=post['id'])}}">
-            <h2 id="title">{{ post['title'] }}</h2>
-        </a>
-        <span class="badge badge-primary">{{ post['created'] }}</span>
-        <a href="{{ url_for('edit', id=post['id']) }}">
-            <span class="badge badge-warning">Edit</span>
-        </a>
+    <h1 style="color: white;">{% block title %}Articles{% endblock %}</h1>
+
+    <div class="container">
+        {% for post in posts %}
+        <div class="postbox">
+            <a href="{{ url_for('post', post_id=post['id']) }}">
+                <h2>{{ post['title'] }}</h2>
+                <p>{{ post["content"][:20] }}</p>
+            </a>
+            <span class="badge badge-primary">{{ post['created'] }}</span>
+            <a href="{{ url_for('edit', id=post['id']) }}">
+                <span class="badge badge-warning">Edit</span>
+            </a>
+        </div>
+        {% endfor %}
+
+        <div class="about">
+            <!-- Add content for about section here -->
+            
+        </div>
     </div>
-    <hr>
-    {% endfor %}
+
+    <div id="he-plugin-simple"></div>
+    <script>
+        WIDGET = {
+          "CONFIG": {
+            "modules": "20134",
+            "background": "5",
+            "tmpColor": "17E6F5",
+            "tmpSize": "30",
+            "cityColor": "17E6F5",
+            "citySize": "30",
+            "aqiColor": "17E6F5",
+            "aqiSize": "30",
+            "weatherIconSize": "30",
+            "alertIconSize": "18",
+            "padding": "10px",
+            "shadow": "0",
+            "language": "zh",
+            "fixed": false,
+            "vertical": "center",
+            "horizontal": "left",
+            "key": "548661035eba4109b6956a7a80e5af51"
+          }
+        }
+    </script>
+
 {% endblock %}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Div+Css实现经典左中右布局</title>
+
+    <style>
+        /* 三栏布局，中间自适应高度... */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .head{
+            height: 100px;
+            width: 100%;
+            background-color: gold;
+            text-align: center;
+        }
+        .container{
+            position: absolute;
+            width: 100%;
+            display: flex;
+            top: 100px;
+            bottom: 100px;
+        }
+        .left-group, .right-group{
+            width: 200px;
+            background-color: #7ecff2;
+            text-align: center;
+        }
+        .mid-group{
+            flex: 1;
+            background-color: #ff5000;
+            text-align: center;
+        }
+        .foot{
+            position: absolute;
+            width: 100%;
+            height: 100px;
+            bottom: 0;
+            background-color: purple;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+      <div class="content">
+           <div class="head">head</div>
+           <div class="container">
+                <div class="left-group">left-group</div>
+                <div class="mid-group">mid-group</div>
+                <div class="right-group">right-group</div>
+           </div>
+           <div class="foot">foot</div>
+      </div>
+
+</body>
+</html>

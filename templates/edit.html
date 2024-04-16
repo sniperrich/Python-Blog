@@ -2,19 +2,31 @@
 
 {% block content %}
 <h1>{% block title %} Edit "{{ post['title'] }}" {% endblock %}</h1>
+<link rel="stylesheet" href=/static/lib/css/editormd.min.css">
+<script src="/static/lib/editormd.min.js"></script>
+<div id="md-content">
+            <textarea placeholder="博客内容" name="content" style="display:none;">
+              [TOC]
 
+#### Disabled options
+
+- TeX (Based on KaTeX);
+- Emoji;
+- Task lists;
+- HTML tags decode;
+- Flowchart and Sequence Diagram;
+            </textarea>
+</div>
 <form method="post">
     <div class="form-group">
         <label for="title">标题</label>
         <input type="text" name="title" placeholder="标题" class="form-control"
             value="{{ request.form['title'] or post['title'] }}">
-        </input>
     </div>
 
     <div class="form-group">
         <label for="content">内容</label>
-        <textarea name="content" placeholder="Post content"
-            class="form-control">{{ request.form['内容'] or post['content'] }}</textarea>
+        <textarea id="editor" name="content" placeholder="Post content" class="form-control">{{ request.form['内容'] or post['content'] }}</textarea>
     </div>
 
     <div class="form-group">
@@ -22,4 +34,17 @@
     </div>
 </form>
 <hr>
+
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+
+<script>
+    var simplemde = new SimpleMDE({ element: document.getElementById("editor") });
+    var editor = editormd("md-content", {
+     width: "100%",
+     height: 640,
+     syncScrolling :"single",
+     path : "/static/lib/lib/"  //选中editormd下的lib下的所有文件
+   });
+</script>
 {% endblock %}

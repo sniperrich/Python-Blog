@@ -33,7 +33,7 @@
 <div class="post-container">
     <h2 class="post-title">{{ post['title'] }}</h2>
     <span class="post-date badge badge-primary">{{ post['created'] }}</span>
-    <p class="post-content">{{ post['content'] }}</p>
+    <div class="post-content">{{ post_cont | safe }}</div>>
     <hr>
     <form action="{{ url_for('delete', id=post['id']) }}" method="POST" class="delete-form">
         <input type="submit" value="删除" class="btn btn-danger btn-sm"

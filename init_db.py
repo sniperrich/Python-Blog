@@ -12,11 +12,11 @@ cur = connection.cursor()
 
 # 插入两条文章
 cur.execute("INSERT INTO posts (title, content) VALUES (?, ?)",
-            ('阿弥诺斯', 'wcnm')
+            ('sb', 'dsb')
             )
 
 cur.execute("INSERT INTO posts (title, content) VALUES (?, ?)",
-            ('阿弥诺斯', 'wcnm')
+            ('sb', 'dsb')
             )
 
 # 提交前面的数据操作
